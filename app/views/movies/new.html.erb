@@ -4,17 +4,17 @@
   <p style="color: red;"><%= message %></p>
 <% end %>
 
-<%= form_with(url: movies_path, data: { turbo: false }) do %>
+<%= form_with(model: @the_movie, data: { turbo: false }) do |form| %>
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <div>
-    <%= label_tag :title_box, "Title" %>
-    <%= text_field_tag "movie[query_title]", @the_movie.title, {id: "title_box" } %>
+    <%= form.label :title %>
+    <%= form.text_field :query_title %>
   </div>
 
   <div>
-    <%= label_tag :description_box, "Description" %>
-    <%= text_area_tag "movie[query_description]", @the_movie.description, { id: "description_box", rows: 3 } %>
+    <%= form.label :description %>
+    <%= form.text_area :query_description, { rows: 3 } %>
   </div>
 
-  <%= button_tag "Create Movie" %>
+  <%= form.button %>
 <% end %>
