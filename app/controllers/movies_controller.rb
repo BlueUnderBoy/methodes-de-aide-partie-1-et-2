@@ -43,19 +43,22 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    the_id = params.fetch(:id)
+    @the_movie = Movie.find(params.fetch(:id))
+    #the_id = params.fetch(:id)
 
-    matching_movies = Movie.where({ id: the_id })
+    #matching_movies = Movie.where({ id: the_id })
 
-    @the_movie = matching_movies.first
+    #@the_movie = matching_movies.first
   end
 
   def update
-    the_id = params.fetch(:id)
-    the_movie = Movie.where({ id: the_id }).first
-
-    the_movie.title = params.fetch(:query_title)
-    the_movie.description = params.fetch(:query_description)
+    the_movie = Movie.find(params.fetch(:id))
+    #the_id = params.fetch(:id)
+    #the_movie = Movie.where({ id: the_id }).first
+    the_movie.title = params.fetch(:movie).fetch(:query_title)
+    the_movie.description = params.fetch(:movie).fetch(:query_description)
+    #the_movie.title = params.fetch(:query_title)
+    #the_movie.description = params.fetch(:query_description)
 
     if the_movie.valid?
       the_movie.save
@@ -66,8 +69,9 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    the_id = params.fetch(:id)
-    the_movie = Movie.where({ id: the_id }).first
+    the_movie = Movie.find(params.fetch(:id))
+    #the_id = params.fetch(:id)
+    #the_movie = Movie.where({ id: the_id }).first
 
     the_movie.destroy
 
