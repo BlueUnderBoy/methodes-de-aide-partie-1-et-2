@@ -62,7 +62,7 @@ class MoviesController < ApplicationController
     #the_movie.description = params.fetch(:query_description)
 
     if the_movie.valid?
-      the_movie.save(movie_attributes)
+      the_movie.save
       redirect_to(movies_url(the_movie), notice: "Movie updated successfully." ) #removed .id
     else
       redirect_to(movies_url(the_movie), alert: "Movie failed to update successfully." ) #removed .id 
