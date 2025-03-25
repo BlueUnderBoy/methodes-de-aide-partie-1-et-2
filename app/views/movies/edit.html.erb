@@ -9,7 +9,7 @@
   
   <div>
     <%= form.label :title %>
-    <%= form.text_field :title, { @the_movie.title } %>
+    <%= form.text_field :title, { value: @the_movie.title } %>
   </div>
 
   <div>
@@ -17,7 +17,7 @@
     <%= form.text_area :description, { rows: 3, value: @the_movie.description } %>
   </div>
 
-  <%= form.button "Update Movie" %>
+  <%= form.button %>
 
 <!--<%= form_with(url: movie_path(@the_movie), method: :patch, data: { turbo: false }) do %>
 
