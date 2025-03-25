@@ -20,11 +20,12 @@ class MoviesController < ApplicationController
   end
 
   def show
-    the_id = params.fetch(:id)
+    @the_movie = Movie.find(params.fetch(:id))
+    #the_id = params.fetch(:id)
 
-    matching_movies = Movie.where({ id: the_id })
+    #matching_movies = Movie.where({ id: the_id })
 
-    @the_movie = matching_movies.first
+    #@the_movie = matching_movies.first
   end
 
   def create
